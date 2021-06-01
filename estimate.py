@@ -1,6 +1,6 @@
 import math
 import unittest
-import random
+import random 
 
 def wallis(n):
     pi = 2.
@@ -17,7 +17,8 @@ def monte_carlo(n):
         dist=math.sqrt(((x-0.5)**2 + (y-0.5)**2))
         if(dist<=0.5):
             circle+=1
-        square+=1
+            square+=1
+
     return 4*float(circle/square)
 
 class TestWallis(unittest.TestCase):
