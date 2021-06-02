@@ -4,7 +4,7 @@ import random
 
 def wallis(n):
     pi = 2.
-    for i in range(1, n+1):
+    for i in range(1,n):
         pi = pi * (4*(i**2))/((4*(i**2))-1)
     return pi
 
