@@ -5,7 +5,7 @@ import random
 def wallis(n):
     pi = 2.
     for i in range(1,n):
-        pi = pi * (4*(i**2))/((4*(i**2))-1)
+        pi = pi*(4*(i**2))/((4*(i**2))-1)
     return pi
 
 def monte_carlo(n):
@@ -14,21 +14,21 @@ def monte_carlo(n):
     for i in range(n):
         x=random.random()
         y=random.random()
-        dist=math.sqrt(((x-0.5)**2 + (y-0.5)**2))
+        dist=math.sqrt(((x-0.5)**2+(y-0.5)**2))
         if(dist<=0.5):
             circle+=1
-            square+=1
+        square+=1
 
     return 4*float(circle/square)
 
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
-        for i in range(0, 5):
+        for i in range(0,5):
             pi = wallis(i)
             self.assertTrue(abs(pi - math.pi) > 0.15, msg=f"Estimate with just {i} iterations is {pi} which is too accurate.\n")
             
     def test_high_iters(self):
-        for i in range(500, 600):
+        for i in range(500,600):
             pi = wallis(i)
             self.assertTrue(abs(pi - math.pi) < 0.01, msg=f"Estimate with even {i} iterations is {pi} which is not accurate enough.\n")
 
@@ -43,7 +43,7 @@ class TestMC(unittest.TestCase):
         self.assertFalse(abs(pi0 - pi1) > 0.05, "Two different estimates of PI are too different. This should not happen")
 
     def test_accuracy(self):
-        for i in range(500, 600):
+        for i in range(500,600):
             pi = monte_carlo(i)
             self.assertTrue(abs(pi - math.pi) < 0.4, msg=f"Estimate with even {i} iterations is {pi} which is not accurate enough.\n")
         
